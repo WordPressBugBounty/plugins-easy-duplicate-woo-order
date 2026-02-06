@@ -5,7 +5,7 @@ Requires at least: 6.5
 Tested up to: 6.8
 Requires PHP: 7.2
 WooCommerce requires at least: 9.3.0
-Stable tag: 2.5.5
+Stable tag: 2.6.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,8 +32,6 @@ Duplicating orders can save time, especially when repeating orders with similar 
 ### Enjoying the Plugin?
 If you find **Easy Duplicate Woo Order** helpful, please consider leaving a positive [review on WordPress.org](https://wordpress.org/plugins/easy-duplicate-woo-order/#reviews). Your feedback helps us improve and reach more users.
 
-Maintaining and updating a plugin requires considerable time and resources. You can [donate to support](https://www.paypal.com/donate/?hosted_button_id=Z8NFDWW8RSDVL) ongoing development and keep the plugin freely available for everyone.
-
 
 ### Other Usefull and absulutly free plugin from wizbee IT
 >[Custom Product in Woo Order](https://wordpress.org/plugins/custom-product-in-woo-order/). Add custom products directly to orders without adding them to the product catalog.
@@ -49,6 +47,10 @@ For more information, visit our website at [wizbee IT](https://www.wizbeeit.com/
 
 == Frequently Asked Questions ==
 
+= Why invoice number not changing for duplicated order? =
+Invoice number is saved as order meta which is not unique. This plugin copy all order related data exactly as it is. Although there are some meta keys that are ignored but it is not possible to get meta key added by other plugin.
+
+
 = Does this plugin work with all versions of WooCommerce? =
 This plugin is tested with WooCommerce 9.0 and above. We recommend keeping WooCommerce updated for the best compatibility.
 
@@ -61,6 +63,11 @@ Yes, this plugin is 100% free to use. No premium version, subscription bla bla b
 = What happens if WooCommerce is not active? =
 If WooCommerce is not active, the plugin will deactivate itself and display an admin notice. WooCommerce must be installed and active for this plugin to work.
 
+
+
+
+
+
 == Screenshots ==
 1. **Duplicate Order action:** Duplicate order from the Order Action.
 2. **Duplicate Order Button on Order List:** Easily duplicate orders from the WooCommerce order list.
@@ -70,6 +77,19 @@ If WooCommerce is not active, the plugin will deactivate itself and display an a
 6. **Order Notes:** Add a note to the new order about the order status change.
 
 == Changelog ==
+
+
+= 2.6.3 =
+* Fixed some order meta copy issue.
+
+
+= 2.6.2 =
+* Fixed some order meta copy issue.
+
+
+= 2.5.6 =
+* Added three action hooks: 'wizbee_before_order_duplicate', 'wizbee_before_duplicate_order_save', and 'wizbee_after_order_duplicated' for flexible developer customization. (Don't know why but someone asked, so here it is.)
+* Implemented full order-level meta duplication, copying all custom checkout fields and plugin meta (excluding WooCommerce system/payment data).
 
 
 = 2.5.5 =

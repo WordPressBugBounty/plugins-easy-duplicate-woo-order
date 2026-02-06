@@ -5,6 +5,9 @@ if (!defined('ABSPATH')) {
 }
 
 function wizbee_duplicate_order_logic($order) {
+	
+	do_action('wizbee_before_order_duplicate', $order);
+	
     if (!is_a($order, 'WC_Order')) {
         return;
     }
@@ -104,13 +107,43 @@ $original_meta_data = $originalOrderItem->get_meta_data();
             $new_order->apply_coupon($coupon_code);
         }
     }
+/*	
+	//copy order level meta
+    $order_meta_data = $order->get_meta_data();
+    foreach ($order_meta_data as $meta) {
+        $key = $meta->key;
+        $value = $meta->value;
 
+         if (
+        strpos($key, '_payment_') === 0 || 
+		strpos($key, 'invoice') !== false ||
+		strpos($key, 'payment') !== false ||
+        in_array($key, [
+            '_order_key',
+            '_edit_lock',
+            '_edit_last',
+            '_transaction_id',
+            '_stripe_source_id',
+            '_stripe_intent_id',
+            '_stripe_customer_id',
+            '_charge_id',
+            '_paypal_status',
+        ])
+    ) {
+        continue;
+    }
+
+        $new_order->update_meta_data($key, $value);
+    }
+*/
+	
     // Set the selected status
     $selected_status = get_option('wizbee_duplicate_order_status', 'wc-pending');
     $new_order->set_status($selected_status);
 
- 
-    $new_order->calculate_totals();
+    do_action('wizbee_before_duplicate_order_save', $new_order, $order);
+	
+	$new_order->calculate_totals();
     $new_order->save();
 
     // Add notes for tracking
@@ -119,6 +152,8 @@ $original_meta_data = $originalOrderItem->get_meta_data();
 
     $new_order_url = admin_url('post.php?post=' . $new_order->get_id() . '&action=edit');
     $order->add_order_note(sprintf(__('This order duplicated to order <a href="%1$s">#%2$d</a>', 'easy-duplicate-woo-order'), esc_url($new_order_url), $new_order->get_id()));
+	
+	do_action('wizbee_after_order_duplicated', $new_order, $order);
 		
 	wp_safe_redirect(add_query_arg('duplicated', 'yes', $new_order_url));
 	exit;

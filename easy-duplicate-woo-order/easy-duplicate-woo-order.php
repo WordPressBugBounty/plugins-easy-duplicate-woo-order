@@ -2,7 +2,7 @@
 /*
 Plugin Name: Easy Duplicate Woo Order
 Description: Easily duplicate WooCommerce orders with just one click. You can also set duplicated order status, fee, shipping, coupon etc option from setting.
-Version: 2.5.5
+Version: 2.6.3
 Plugin URI: https://www.wizbeeit.com/easy-duplicate-woo-order
 Author: wizbee IT
 Author URI: https://www.wizbeeit.com/
