@@ -4,7 +4,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-define('WB_EDWO_NOTICE_VER', '2.6.2');
+define('WB_EDWO_NOTICE_VER', '2.7.2');
 
 add_action('admin_init', 'wb_edwo_handle_dismiss_notice');
 function wb_edwo_handle_dismiss_notice() {
@@ -26,7 +26,7 @@ function wb_edwo_promotional_notice() {
     if ($dismissed_version === WB_EDWO_NOTICE_VER) return;
 
     $plugin_url = 'https://wordpress.org/support/plugin/easy-duplicate-woo-order/reviews/#new-post';
-    $donate_url = 'https://www.paypal.com/donate/?hosted_button_id=Z8NFDWW8RSDVL';
+    $donate_url = 'https://www.wizbeeit.com/donate/';
     $dismiss_url = add_query_arg('wb_edwo_dismiss_notice', WB_EDWO_NOTICE_VER);
 
     ?>
@@ -37,7 +37,7 @@ Maintaining and regularly updating a plugin requires significant time and effort
         
         <p>
             <a class="button-secondary" href="<?php echo esc_url($plugin_url); ?>" target="_blank"><?php _e('Leave a Review', 'easy-duplicate-woo-order'); ?></a>
-            <a class="button-primary" style="display:none;" href="<?php echo esc_url($donate_url); ?>" target="_blank"><?php _e('Buy us a coffee', 'easy-duplicate-woo-order'); ?></a>
+            <a class="button-primary"  href="<?php echo esc_url($donate_url); ?>" target="_blank"><?php _e('Buy us a coffee', 'easy-duplicate-woo-order'); ?></a>
             <a href="<?php echo esc_url($dismiss_url); ?>&action=already" style="margin-left:10px;"><?php _e('Already did', 'easy-duplicate-woo-order'); ?></a> |
             <a href="<?php echo esc_url($dismiss_url); ?>&action=never"><?php _e('Never mind', 'easy-duplicate-woo-order'); ?></a>
         </p><br>

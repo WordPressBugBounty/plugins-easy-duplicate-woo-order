@@ -1,11 +1,12 @@
 === Easy Duplicate Woo Order ===
-Contributors: wizbee
+Contributors: wizbee, tanvirroky
 Tags: woocommerce, duplicate order, manage order, order clone
 Requires at least: 6.5
-Tested up to: 6.8
+Tested up to: 6.9
 Requires PHP: 7.2
 WooCommerce requires at least: 9.3.0
-Stable tag: 2.6.3
+Stable tag: 2.7.2
+Donate link: https://www.wizbeeit.com/donate/
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,8 +15,6 @@ Easily duplicate WooCommerce orders with just one click. You can also set duplic
 == Description ==
 
 **Easy Duplicate Woo Order** allows WooCommerce store admins to duplicate existing orders with just one click quickly. This is particularly useful for creating repeat orders or managing similar orders without having to input each item and customer detail again manually.
-
-## Free to use and no premium version.
 
 
 ## Key Features:
@@ -35,6 +34,7 @@ If you find **Easy Duplicate Woo Order** helpful, please consider leaving a posi
 
 ### Other Usefull and absulutly free plugin from wizbee IT
 >[Custom Product in Woo Order](https://wordpress.org/plugins/custom-product-in-woo-order/). Add custom products directly to orders without adding them to the product catalog.
+>[Spam Filter For Elementor Form](https://wordpress.org/plugins/spam-filter-for-elementor-form/). A simple yet powerful plugin that adds advanced spam and content filtration to your Elementor Pro forms..
 
 For more information, visit our website at [wizbee IT](https://www.wizbeeit.com/)
 
@@ -77,6 +77,9 @@ If WooCommerce is not active, the plugin will deactivate itself and display an a
 6. **Order Notes:** Add a note to the new order about the order status change.
 
 == Changelog ==
+
+= 2.7.2 =
+* Fixed issue where stock was not adjusted on duplicated orders when order status changed.
 
 
 = 2.6.3 =

@@ -21,7 +21,7 @@ Maintaining and regularly updating a plugin requires significant time and effort
         
         <p>
             <a class="button-secondary" href="https://wordpress.org/support/plugin/easy-duplicate-woo-order/reviews/#new-post" target="_blank"><?php _e('Leave a Review', 'easy-duplicate-woo-order'); ?></a>
-            <a class="button-primary" href="https://www.paypal.com/donate/?hosted_button_id=Z8NFDWW8RSDVL" target="_blank"><?php _e('Buy us a coffee', 'easy-duplicate-woo-order'); ?></a>
+            <a class="button-primary" href="https://www.wizbeeit.com/donate/" target="_blank"><?php _e('Buy us a coffee', 'easy-duplicate-woo-order'); ?></a>
         </p>
     </div>
     <?php

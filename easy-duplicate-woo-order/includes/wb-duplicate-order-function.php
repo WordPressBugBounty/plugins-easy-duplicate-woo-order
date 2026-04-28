@@ -57,8 +57,15 @@ function wizbee_duplicate_order_logic($order) {
         ]);
 $original_meta_data = $originalOrderItem->get_meta_data();
     foreach ($original_meta_data as $meta) {
-        wc_add_order_item_meta($new_item_id, $meta->key, $meta->value, true); // Add original meta to the new item
+    if (in_array($meta->key, 
+		[
+			'_reduced_stock',
+			'_restock_refunded_items'
+		], true)) {
+        continue; 
     }
+    wc_add_order_item_meta($new_item_id, $meta->key, $meta->value, true);
+}
         // Copy item meta and set calculated price
         wc_add_order_item_meta($new_item_id, '_qty', $quantity);
         wc_add_order_item_meta($new_item_id, '_product_id', $productID);
@@ -107,35 +114,7 @@ $original_meta_data = $originalOrderItem->get_meta_data();
             $new_order->apply_coupon($coupon_code);
         }
     }
-/*	
-	//copy order level meta
-    $order_meta_data = $order->get_meta_data();
-    foreach ($order_meta_data as $meta) {
-        $key = $meta->key;
-        $value = $meta->value;
 
-         if (
-        strpos($key, '_payment_') === 0 || 
-		strpos($key, 'invoice') !== false ||
-		strpos($key, 'payment') !== false ||
-        in_array($key, [
-            '_order_key',
-            '_edit_lock',
-            '_edit_last',
-            '_transaction_id',
-            '_stripe_source_id',
-            '_stripe_intent_id',
-            '_stripe_customer_id',
-            '_charge_id',
-            '_paypal_status',
-        ])
-    ) {
-        continue;
-    }
-
-        $new_order->update_meta_data($key, $value);
-    }
-*/
 	
     // Set the selected status
     $selected_status = get_option('wizbee_duplicate_order_status', 'wc-pending');

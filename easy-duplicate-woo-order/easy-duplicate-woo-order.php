@@ -2,9 +2,9 @@
 /*
 Plugin Name: Easy Duplicate Woo Order
 Description: Easily duplicate WooCommerce orders with just one click. You can also set duplicated order status, fee, shipping, coupon etc option from setting.
-Version: 2.6.3
+Version: 2.7.2
 Plugin URI: https://www.wizbeeit.com/easy-duplicate-woo-order
-Author: wizbee IT
+Author: wizbee IT, Tanvir Roky
 Author URI: https://www.wizbeeit.com/
 Text Domain: easy-duplicate-woo-order
 Requires Plugins: woocommerce
@@ -58,12 +58,12 @@ require_once plugin_dir_path(__FILE__) . 'includes/notice.php';
 
 if (isset($_GET['page']) && $_GET['page'] === 'wc-settings' && isset($_GET['tab']) && $_GET['tab'] === 'wizbee_duplicate_order') {
         // Enqueue your JavaScript file
-        wp_enqueue_script('wizbee-admin-script', plugin_dir_url(__FILE__) . 'assets/js/admin-settings.js', array('jquery'), '2.5.4', true);
+        wp_enqueue_script('wizbee-admin-script', plugin_dir_url(__FILE__) . 'assets/js/admin-settings.js', array('jquery'), '2.7.2', true);
     }
 
 add_action('admin_enqueue_scripts', 'wizbee_enqueue_duplicate_recalc_script');
 function wizbee_enqueue_duplicate_recalc_script($hook_suffix) {
     if (isset($_GET['duplicated']) && 'yes' === $_GET['duplicated']) {
-        wp_enqueue_script('wizbee-duplicate-recalc', plugin_dir_url(__FILE__) . 'assets/js/order-recal-script.js',['jquery'], '2.5.4', true);
+        wp_enqueue_script('wizbee-duplicate-recalc', plugin_dir_url(__FILE__) . 'assets/js/order-recal-script.js',['jquery'], '2.7.2', true);
     }
 }
